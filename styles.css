@@ -1,13 +1,89 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;1,300&family=Oswald:wght@300;400;600;700&family=Raleway:ital,wght@0,300;0,400;1,200;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap&family=Catamaran:wght@300;400;500;600&display=swap&family=Source+Sans+Pro:wght@300;400&display=swap');
 
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 
-*{
+* {
     margin: 0;
     padding: 0;
+    list-style: none;
+    text-decoration: none;
 }
 
-header{
+:root{
+    --font-primary: "Bebas Neue", serif;
+    --font-secondary: "Source Sans Pro", serif;
+    --font-action: "Catamaran", serif;
+}
+
+.hamburguer {
+    width: 2rem;
+    height: 2rem; 
+    position: fixed;
+    z-index: 100;
+    right: 2rem;
+    top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+
+.show-menu .hamburguer{
+    right: 16rem;
+}
+
+
+.line{
+    width: 100%;
+    background-color: #ffffff;
+    height: .1rem;
+    box-shadow: 0.1rem 0.1rem 1px #000;
+    transition: transform 2s;
+}
+
+.show-menu #line1{
+    transform: rotate(45deg) translate(.3rem, .3rem);
+}
+
+.show-menu #line2{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.show-menu #line3{
+    transform: rotate(-45deg) translate(.3rem, -.4rem);
+}
+
+.hamburguer span{
+    position: absolute;
+    left: 3rem;
+    height: 2rem;
+    width: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00B4DB;
+    color: #ffffff;
+    font-family: var(--font-action);
+    text-transform: capitalize;
+    opacity: 0;
+}
+
+.hamburguer span::before{
+    content: "";
+    position: absolute;
+    border-right: .7rem solid #00B4DB;
+    border-top: .7rem solid transparent;
+    border-left: .7rem solid transparent;
+    border-bottom: .7rem solid transparent;
+    left: -1.3rem;
+}
+
+.show-menu .hamburguer:hover span{
+    opacity: 1;
+}
+
+header {
     width: 100%;
     /*Força a utlização de 100% da altura da tela*/
     height: 100vh;
@@ -17,15 +93,17 @@ header{
 }
 
 /*É necessário especificar o tamanho e altura que esse componente irá ocupar da classe pai*/
-.img-wrapper{
+
+.img-wrapper {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 /*Seletor da tag img dentro da classe img-wrapper*/
-.img-wrapper img{
+
+.img-wrapper img {
     width: 100%;
     height: 100%;
     /*Faz com que a imagem cubra a div, permitindo uma adaptação melhor para telas menores sem perder proporção*/
@@ -34,43 +112,43 @@ header{
     animation: zoom 15s;
 }
 
-@keyframes zoom{
-    0%{
+@keyframes zoom {
+    0% {
         transform: scale(1.3);
     }
-    100%{
+    100% {
         transform: scale(1);
     }
 }
 
-.banner{
+.banner {
     position: absolute;
     top: 35%;
     left: 10%;
 }
 
-.banner h1{
+.banner h1 {
     color: #ffffff;
-    font-size: 3rem;
-    font-family: "Raleway", serif;
+    font-size: 4rem;
+    font-family: var(--font-primary);
     font-weight: 200;
-    text-shadow: .2rem .1rem 1px rgba(0,0,0, .8);
+    text-shadow: .2rem .1rem rgba(0, 0, 0, .8);
     opacity: 0;
-    animation: moveBanner 2s 0.5s forwards; 
+    animation: moveBanner 2s 0.5s forwards;
 }
 
-.banner p{
+.banner p {
     color: #ffffff;
-    font-family: "Raleway", serif;
+    font-family: var(--font-secondary);
     font-size: 2rem;
-    text-shadow: .2rem .1rem  rgba(0,0,0, .8);
+    text-shadow: .13rem .1rem rgba(0, 0, 0, .8);
     opacity: 0;
     margin-bottom: 1rem;
-    animation: moveBanner 2s 0.7s forwards; 
+    animation: moveBanner 2s 0.7s forwards;
 }
 
-.banner button{
-    font-family: "Open Sans Condensed", serif;
+.banner button {
+    font-family: var(--font-action);
     color: #ffffff;
     padding: 1rem 3rem;
     border: none;
@@ -80,25 +158,98 @@ header{
     opacity: 0;
     letter-spacing: .1rem;
     cursor: pointer;
-    animation: moveBanner 2s 0.9s forwards; 
-    background: #00B4DB; 
-    background: -webkit-linear-gradient(to right, #0083B0, #00B4DB); 
-    background: linear-gradient(to right, #0083B0, #00B4DB); 
-
+    animation: moveBanner 2s 0.9s forwards;
+    background: #00B4DB;
+    background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);
+    background: linear-gradient(to right, #0083B0, #00B4DB);
+    box-shadow: 0.1rem 0.1rem 1px #000;
 }
 
-@keyframes moveBanner{
-    0%{
+@keyframes moveBanner {
+    0% {
         transform: translateY(15rem) rotateY(-30deg);
     }
-    100%{
+    100% {
         transform: translateY(0) rotateY(0);
         opacity: 1;
     }
 }
 
-.banner button:hover{
+.banner button:hover {
     color: #000;
-    opacity: 0.9;
+}
+
+.sidebar{
+    width: 20rem;
+    height: 100vh;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    right: -20rem;
+    transition: all 1s;
+}
+
+.show-menu .sidebar{
+    right: 0;
+}
+
+.menu{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-80%, -50%);
+}
+
+.menu-item{
+    text-align: justify;
+    margin-bottom: 1rem;
+}
+
+.menu-link{
+    font-family: var(--font-action);
+    color: #555;
+    font-size: 2rem;
+    transition: color 1s;
+}
+
+.menu-link:hover{
+    color:#00B4DB;
+}
+
+.social-media{
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.social-media i{
+    color: #0083B0;
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 2.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-media i#whats{
+    color: green;
+}
+
+.social-media i#insta{
+    color: #ffffff;
+    border-radius: 10px;
+    background: #833ab4;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.social-media i:hover{
+    opacity: 0.8;
 }
 

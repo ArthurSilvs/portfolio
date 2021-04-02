@@ -1,13 +1,15 @@
-# Portfólio
+## Portfólio
+
 Portfólio do desenvolvedor
 
 ## Tarefas
 
 Controle realizado pelo GitHub
 
-## Icones
+## Ícones
 
-:star: Nova Funcionalidade
-:fire: Atualização
-:bug: Correção de Bug
-:new_moon: Release
+- :star: Nova Funcionalidade
+- :fire: Atualização
+- :bug: Correção de Bug
+- :new_moon: Release
+ 
